@@ -1,0 +1,53 @@
+Dairy Farm Management System (Database Tables Used):-
+
+SQL> desc dfUser;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ USERID                                    NOT NULL NUMBER
+ USERNAME                                           VARCHAR2(50)
+ MOBILENO                                           VARCHAR2(15)
+ USERADDRESS                                        VARCHAR2(100)
+ GENDER                                             CHAR(1)
+ USERDOB                                            DATE
+ USERAGE                                            NUMBER
+ NUMBEROFCOWS                                       NUMBER
+ PASSWORD                                           VARCHAR2(50)
+
+SQL> desc addAnimal;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ANIMALID                                  NOT NULL NUMBER(3)
+ ANIMALTAGNO                                        VARCHAR2(5)
+ USERID                                             NUMBER(3)
+ MOBILENO                                           NUMBER(10)
+ ANIMALTYPE                                         VARCHAR2(10)
+ ANIMALDOB                                          DATE
+ ANIMALAGE                                          VARCHAR2(20)
+
+SQL> desc takeMilkRecord;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ RECORDID                                  NOT NULL NUMBER(3)
+ USERID                                             NUMBER(3)
+ MOBILENO                                           NUMBER(10)
+ RECORDDATE                                         DATE
+ RECORDSESSION                                      VARCHAR2(20)
+ MILKQUANTITY                                       VARCHAR2(3)
+ MILKFATCONTENT                                     VARCHAR2(3)
+ MILKRATE                                           FLOAT(126)
+
+SQL> desc animalCheckUp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REQUESTID                                 NOT NULL NUMBER(3)
+ USERID                                             NUMBER(3)
+ USERNAME                                           VARCHAR2(20)
+ MOBILENO                                           NUMBER(10)
+ COWTAGNO                                           VARCHAR2(5)
+ HEALTHCONDITION                                    VARCHAR2(20)
+ SYMPTOMS                                           VARCHAR2(10)
+ ONGOINGTREATMENT                                   VARCHAR2(4)
+ LASTVACCINATIONDATE                                DATE
+ SCHEDULESTATUS                                     VARCHAR2(20)
+ REQUESTDATE                                        DATE
+ SCHEDULEDDATE                                      DATE

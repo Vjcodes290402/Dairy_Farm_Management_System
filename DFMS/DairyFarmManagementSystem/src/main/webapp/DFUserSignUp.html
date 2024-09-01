@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>DFuser SignUp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        p {
+            text-align: center;
+            margin-top: 10px;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #ddd;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* Style for back button on hover */
+        .back-btn:hover {
+            background-color: #ccc;
+        }
+        .logo-text {
+            font-family: 'Cooper Black';
+            font-size: 36px;
+            font-weight: bold;
+            color: #4CAF50; /* Green color similar to dairy farm logo */
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<script>
+    function calculateAge() {
+        var dob = document.getElementById("userDob").value;
+        var dobDate = new Date(dob);
+        var today = new Date();
+        var age = today.getFullYear() - dobDate.getFullYear();
+        var monthDiff = today.getMonth() - dobDate.getMonth();
+        
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+        }
+        
+        document.getElementById("userAge").value = age;
+    }
+    function validatePassword() {
+        const password = document.getElementById("passWord").value;
+        const confirmPassword = document.getElementById("confirmPassWord").value;
+        const passwordError = document.getElementById("passwordErrorMessage");
+
+        if (password !== confirmPassword) {
+            passwordError.textContent = "Passwords do not match.";
+            document.getElementById("confirmPassWord").classList.add("error");
+        } else {
+            passwordError.textContent = "";
+            document.getElementById("confirmPassWord").classList.remove("error");
+        }
+    }
+</script>
+
+<body>
+<div class="container">
+    <h1 class="logo-text">Dairy Farm User SignUp Page</h1>
+    <div>
+    <img alt="Sign Up" src="Images/th (9).jpeg">
+    </div>
+    <form action="DFUserServlet?action=Sign Up" method="post">
+    <label for="userName">Name</label>
+    <input type="text" name="userName" placeholder="Name" required><br>
+    <label for="mobileNo">Mobile Number</label>
+    <input type="number" name="mobileNo" placeholder="Mobile Number" required><br>
+    <label for="userAddress">Address</label>
+    <input type="text" name="userAddress" placeholder="Address" required><br>
+    <label for="gender">Gender</label>
+    <select name="gender" required>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+    </select><br>
+    <label for="userDob">Date of Birth</label>
+<input type="date" name="userDob" id="userDob" onchange="calculateAge()" required><br>
+
+<label for="userAge">Age</label>
+<input type="text" name="userAge" id="userAge" readonly><br>
+
+<label for="numberOfCows">Number Of Cows</label>
+<input type="number" name="numberOfCows" id="numberOfCows" required><br>
+
+   <label for="passWord">Password</label>
+            <input type="password" name="passWord" id="passWord" placeholder="Password" required><br>
+            
+            <label for="confirmPassWord">Confirm Password</label>
+            <input type="password" name="confirmPassWord" id="confirmPassWord" placeholder="Confirm Password" required onkeyup="validatePassword()"><br>
+            <span class="error" id="passwordErrorMessage"></span><br>
+    <input type="submit" value="Sign Up" name="action">
+</form>
+    <p>Already have an account? <a href="DFUserLogin.jsp">Login here</a></p>
+    <a href="DairyFarmManagementSystem.html" class="back-btn">Back</a>
+</div>
+</body>
+</html>
